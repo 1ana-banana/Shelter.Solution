@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Shelter.Models;
+namespace Shelter.Models
 {
   public class Breed
   {
