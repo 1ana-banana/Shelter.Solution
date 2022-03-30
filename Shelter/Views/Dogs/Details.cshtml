@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Shelter.Models.Dog
+
+<h2>Rescue Details</h2>
+
+<h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</h3>
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+<h3>@Html.DisplayNameFor(model => model.Birthday): @Html.DisplayFor(model => model.Birthday)</h3>
+
+@if (@Model.JoinIR.Count == 0)
+{
+  <p>This rescue is not associated with any breeds! Unknown quantity of love incoming!</p>
+}
+else
+{
+  <h3>This dog is connected with:</h3>
+  <ul>
+    @foreach (var join in Model.JoinIR)
+    {
+      <li>@join.Breed.Name</li>
+      @using (Html.BeginForm())
+      {
+        @Html.Hidden("joinId", @join.BreedDogId)
+        <input type = "submit" value = "Delete" class = "btn btn-dark" />
+      }
+    }
+  </ul>
+}
+<p>@Html.ActionLink("Add a Breed Category", "AddBreed", new{ id= Model.DogId })</p>
+<p>@Html.ActionLink("Back to Dogs", "Index")</p>
+<p>@Html.ActionLink("Edit Dog", "Edit", new {id = Model.DogId })</p>
+<p>@Html.ActionLink("Delete Dog", "Delete", new { id = Model.DogId })</p>

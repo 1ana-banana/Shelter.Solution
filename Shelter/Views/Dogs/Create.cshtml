@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Shelter.Models.Dog
+
+<h2>Add a new Rescue</h2>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Title)
+  @Html.TextBoxFor(model => model.Title, new {@class = "form-control", type = "text", required = "text"})
+
+  @Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description, new {@class = "form-control", type = "text", required = "text"})
+
+  @Html.LabelFor(model => model.Birthday)
+  @Html.TextBoxFor(model => model.Birthday, new {@type = "date"})
+  <input type = "submit" value = "Add new Dog" class = "btn btn-dark" />
+}
+
+<p>@Html.ActionLink("Show all Dogs", "Index")</p>

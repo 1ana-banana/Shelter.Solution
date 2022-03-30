@@ -1,0 +1,44 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Shelter.Models.EDog
+<div class="container">
+<br>
+<br>
+<div class="column">
+  <div class=row>
+    <div class="card border-primary mb-3" style="max-width: 40rem;">
+      <div class="card-header">
+        <h3>Update or change dog info:</h3>
+        <h4>@Html.DisplayFor(model => model.Name)</h4>
+      </div>
+      <div class="card-body">
+        @using (Html.BeginForm())
+        {
+          @Html.HiddenFor(model => model.DogId)
+          @Html.LabelFor(model => model.Name)
+          @Html.EditorFor(model => model.Name)
+          <br>
+          @Html.LabelFor(model => model.Details)
+          @Html.EditorFor(model => model.Details)
+          <br>
+          @Html.Label("Assign breed to dog")
+          @Html.DropDownList("BreedId")
+          <br>
+          <br>
+          <input type="submit" value="Save" class="btn btn-primary"/>
+        }
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-md-3">
+    <br>
+    <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Back to dogs", "Index")</button>
+    <br>
+    <br>
+    <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Home", "Index", "Home")</button>
+    </div>   
+  </div>
+</div>
