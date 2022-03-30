@@ -1,4 +1,4 @@
-## _Amber and Ana's Delightful Dog Rescue_
+## _Amber and Ana's Delightful Dog Rescue 🦝_
 
 #### _By Anastasia Han and Amber Wilwand_
 
