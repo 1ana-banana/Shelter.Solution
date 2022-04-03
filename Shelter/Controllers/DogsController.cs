@@ -37,16 +37,16 @@ namespace Shelter.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create (BreedDog dog, int BreedId1)
+    public async Task<ActionResult> Create(Dog dog, int BreedId)
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
       dog.User = currentUser;
       _db.Dogs.Add(dog);
       _db.SaveChanges();
-      if (BreedId1 != 0)
+      if (BreedId != 0)
       {
-        _db.BreedDogs.Add(new BreedDog() { BreedId = BreedId1, DogId = dog.DogId });
+        _db.BreedDogs.Add(new BreedDog() { BreedId = BreedId, DogId = dog.DogId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
