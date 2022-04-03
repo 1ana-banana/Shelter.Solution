@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Shelter.Models;
+@model IEnumerable<Shelter.Models.Breed>;
+
+<h1>Breed for @User.Identity.Name</h1>
+
+@if (Model.Any())
+{
+  <ul>
+  @foreach (Breed breed in Model)
+    {
+      <li>@Html.ActionLink($"{breed.Name}", "Details", new { id = breed.BreedId })</li>
+    }
+  </ul>
+}
+else
+{
+  <h3>No breeds have been added yet!</h3>
+}
+
+<p>@Html.ActionLink("Add new breed", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

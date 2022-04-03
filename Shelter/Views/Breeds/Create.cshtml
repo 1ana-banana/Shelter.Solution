@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Shelter.Models.Breed
+
+<h4>Add a new breed</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name, new {@class = "form-control", type="text", required="text"})
+
+  @Html.Label("Select dog")
+  @Html.DropDownList("DogId")
+
+  <input type="submit" value="Add new breed" class="btn btn-dark" />
+}
+<p>@Html.ActionLink("Show all breeds", "Index")</p>
